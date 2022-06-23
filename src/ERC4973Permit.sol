@@ -4,12 +4,17 @@ pragma solidity ^0.8.6;
 import {ECDSA} from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import {EIP712} from "@openzeppelin/contracts/utils/cryptography/draft-EIP712.sol";
 import {BitMaps} from "@openzeppelin/contracts/utils/structs/BitMaps.sol";
+import {Counters} from "@openzeppelin/contracts/utils/Counters.sol";
+
 import {ERC4973} from "./ERC4973.sol";
 import {IERC4973Permit} from "./interfaces/IERC4973Permit.sol";
 
 /// @notice Reference implementation of ERC4973Permit
 /// @author Rahul Rumalla, Tim Daubenschuetz (https://github.com/rugpullindex/ERC4973/blob/master/src/ERC4973Permit.sol)
 abstract contract ERC4973Permit is ERC4973, EIP712, IERC4973Permit {
+  using Counters for Counters.Counter;
+  Counters.Counter private _tokenIds;
+
   bytes32 private immutable MINT_PERMIT_TYPEHASH =
     keccak256(
       "MintPermit(address from,address to,string tokenURI)"

@@ -7,7 +7,6 @@ import {Counters} from "@openzeppelin/contracts/utils/Counters.sol";
 import {IERC721Metadata} from "./interfaces/IERC721Metadata.sol";
 import {IERC4973} from "./interfaces/IERC4973.sol";
 
-
 /// @notice Reference implementation of EIP-4973 tokens.
 /// @author TimDaub (https://github.com/rugpullindex/ERC4973/blob/master/src/ERC4973.sol)
 abstract contract ERC4973 is ERC165, IERC721Metadata, IERC4973 {
